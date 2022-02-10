@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+
+{% endblock css %}
+
+{% block title %}{{ sub.sub_name }}{% endblock title%}
+
+{% block content %}
+
+<div class="container my-2">
+    <div class="row my-4">
+        <div class="col-md-4">
+            <div class="subject-view">
+                <h2>{{sub.sub_name}} </h2>
+
+                <p id="sub-desc">{{sub.sub_desc}}</p>
+            </div>
+        </div>
+        <div class="col-md-8 p-3">
+            <div class="row">
+                <h5 class="txtc">Tutors Available:- ({{count}})</h5>
+                {% if users|length < 1 %} <div class="text-center p-4">
+                    <h3 class="text-danger">No Teachers Currently Available.</h3>
+                    <p>Please Leave a message so that we can contact you!</p>
+                    <a href="{% url 'home' %}#contact" class="btn btn-sm btn-bgc">Contact Us</a>
+
+            </div>
+
+            {% endif %}
+            {% for i in users %}
+            <div class="col-md-6">
+                <div class="card card-body my-2 ">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div>
+
+                                <img src="{{i.image.url}}" class="image-thumbnail w-75 m-auto" alt="Photos">
+
+                            </div>
+                            <div class="mt-5">
+                                <a href="{% url 'booking' i.user.id %}" class="m-1">
+                                    <button class="btn btn-bgc"> Enquiry
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <h3>{{i.user.first_name}} {{i.user.last_name}}</h3>
+                            <p class="m-0">Email: {{i.user.email}}</p>
+                            <p class="m-0">Address: {{i.address}}</p>
+                            <p class="m-0">Contact: {{i.phone}}</p>
+                            <p class="m-0">Qualification: {{i.qualification}}</p>
+                            <p class="m-0">Experience: {{i.experience}} years</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+
+
+        </div>
+    </div>
+</div>
+<hr>
+<div class="my-4">
+
+    <h2 class="text-center txtc">Recommended Subjects</h2>
+    <div class="row">
+        {% for sub in subjects.all|slice:"0:4" %}
+        <div class="col-md-3 p-2">
+            <a href="/subjects/{{sub.sub_id}}" class="text-decoration-none text-dark">
+
+                <div class="card cardStyle">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><strong>{{sub.sub_name}}</strong></h5>
+                        <p class="card-text">{{sub.sub_desc|slice:"0:125" }}</p>
+
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+</div>
+
+
+{% endblock content %}

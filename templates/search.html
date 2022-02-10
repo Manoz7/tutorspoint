@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<style>
+    .row {
+        justify-content: space-around;
+    }
+
+    .content {
+        min-height: 70vh;
+    }
+</style>
+{% endblock %}
+{% block title %}Search Result{% endblock %}
+
+
+
+{% block content %}
+<div class="container my-3 content">
+
+    <h2>Search Results for "{{query}}" are:- </h2>
+    {% if page %}
+    {% if subject|length < 1 %} <p>No Search Result</p>
+        Your search query : <b>{{query}}</b> did not match any documents. <br>
+        Suggestions:
+        <ul>
+            <li>Make sure that all words are spelled correctly.</li>
+            <li>Try more general keywords.</li>
+            <li> Try fewer keywords.</li>
+            <li> Try different keywords.</li>
+            </li>
+        </ul>
+        {% endif %}
+
+        <div class="row container d-flex">
+            {% for i in subject %}
+            <div class="col-md-4">
+
+                <div class="card cardStyle p-3 m-3">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{i.sub_name}}</h5>
+                        <p class="card-text">{{i.sub_desc|slice:"0:222" }}...</p>
+
+                        <a href="/subjects/{{i.sub_id}}" class="btn btn-bgc">Quick view</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% endif %}
+
+
+
+</div>
+
+
+{% endblock %}

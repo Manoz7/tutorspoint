@@ -1,0 +1,104 @@
+{% extends 'admin/admin_nav.html' %}
+{% block css %}
+<style>
+    a{
+        text-decoration: none;
+    }
+    .imageDiv{
+        height: 120px;
+        width: 136px;
+        text-align: center;
+        padding: 5px;
+    }
+    .imageDiv img{
+        max-height: 100%;
+        max-width: 100%;
+        border: 4px solid green;
+        margin: auto;
+        
+    }
+    .info p span{
+        color: #2C5364;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2 class="text-center my-3 txtc fw-bold">Our Tutors</h2>
+    
+    <hr>
+    {% include '../messages.html' %}
+
+    <div class="row">
+
+        {% for i in users %}
+
+        <div class="col-md-4 col-sm-6 mb-2">
+            <div class="card card-body my-2 h-100 ">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="imageDiv">
+
+                            <img src="{{i.image.url}}" class="image-thumbnail w-75 m-auto rounded-circle" alt="Photos">
+
+                        </div>
+                        <div class="my-4">
+                        </div>
+
+                        <div>
+                            {% if i.status.status == 'Accept' %}
+                            <a href="{% url 'deleteUser' i.id %}" class="m-1">
+                                <button class="btn btn-danger"
+                                    onclick="return confirm('Do you want to delete this user?')">
+                                    Delete
+                                </button>
+                            </a>
+                            {%endif %}
+                            {% if i.status.status == 'pending' %}
+                            <a href="{% url 'acceptUser' i.id %}" class="m-1">
+                                <button class="btn btn-success"
+                                    onclick="return confirm('Do you want to accept this user?')">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </a>
+                            <a href="{% url 'deleteUser' i.id %}" class="m-1">
+                                <button class="btn btn-danger"
+                                    onclick="return confirm('Do you want to delete this item?')">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </a>
+                            {% endif %}
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-8 info">
+                        <h3 class="txtc">{{i.user.first_name | capfirst}} {{i.user.last_name | capfirst}}</h3>
+                        <a href="{{i.cert.url}}" target="_blank" class="text-danger">Training Certificate</a>
+                        <p class="m-0"><span>Username:</span> @{{i.user.username}}</p>
+                        <p class="m-0"><span>Email:</span> {{i.user.email}}</p>
+                        <p class="m-0"><span>Subject:</span> {{i.subject.sub_name}}</p>
+                        <p class="m-0"><span>Address:</span> {{i.address}}</p>
+                        <p class="m-0"><span>Contact:</span> {{i.phone}}</p>
+                        <p class="m-0"><span>Qualification:</span> {{i.qualification}}</p>
+                        <p class="m-0"><span>Experience:</span> {{i.experience}} years</p>
+                        <p class="m-0"><span>Status:</span> {{i.status.status}}</p>
+                        <p class="m-0"><span>Date Joined:</span> {{i.date_joined}} </p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
+{% block js %}
+
+{% endblock %}

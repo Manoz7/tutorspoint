@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Subjects{% endblock title %}
+{% block sactive %} active {% endblock %}
+
+{% block content %}
+<div class="subCover">
+    <div class="container py-4">
+        <h2 class="text-center txtc">Our Subjects</h2>
+        <div class="hr1 mx-auto"></div>
+        <div class="row">
+            {% for sub in subjects %}
+            <div class="col-md-4 p-2">
+                <div class="card cardStyle">
+                    <div class="card-body">
+                        <h5 class="card-title text-center txtc">{{sub.sub_name}}</h5>
+                        <p class="card-text">{{sub.sub_desc|slice:"0:250" }}</p>
+                        <div class="w-100 text-center"><a href="/subjects/{{sub.sub_id}}"
+                                class="card-link align-items-center btn btn-sm btn-bgc">Search for
+                                Tutor</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

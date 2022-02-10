@@ -1,0 +1,37 @@
+{% extends 'admin/admin_nav.html' %}
+{% load static %}
+{% block title %} Add Subject{% endblock title %}
+{% block css %}
+
+{% endblock css %}
+{% block body %}
+
+<div class="container cover-height">
+    <div class="my-3">
+        <h2>Add Subject</h2>
+    </div>
+    <div>
+        <form action="/add_subject/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Subject Name</label>
+                <input type="text" class="form-control" name="sub_name" placeholder="Enter Subject Name" required>
+            </div>
+
+            <div class="form-group my-2">
+                <label>Subject Description</label>
+                <textarea name="sub_desc" id="sub_desc" cols="30" class="form-control" rows="10"
+                    placeholder="SubjectDescription" required></textarea>
+            </div>
+
+            
+            <div class="form-group my-2">
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-primary">Reset</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock %}

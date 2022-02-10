@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css %}
+
+{% endblock css %}
+{% block title %}Home{% endblock title %}
+
+<!-- Adding active class -->
+{% block hactive %} active {% endblock %}
+
+{% block content %}
+
+<div class="cover-part">
+    <div class="cover-header">
+        <h2>Welcome To <span>TutorsPoint </span></h2>
+        <p>You can find best tutors all around the valley.</p>
+        <a href="#contact" class="btn btn-sm btn-bgc">Contact</a>
+    </div>
+
+</div>
+
+<section id="aboutus" class="container my-3">
+    <div>
+        <h2 class="txtc"><i class="fas fa-user"></i> About Us</h2>
+        <div class="hr1"></div>
+
+    </div>
+
+    <div class="row d-flex">
+        <div class="col-md-8">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores vel ratione laboriosam? Eaque ut iure
+                ipsam ipsum facilis id perferendis rem, accusantium ratione eligendi minima tempora totam quibusdam!
+                Alias aut vitae eligendi ducimus tempora facere reprehenderit possimus fugit dignissimos quo a beatae
+                tenetur veritatis doloremque sequi officia nulla dolor, iusto repudiandae, vel maiores laudantium autem
+                libero. Quisquam doloribus placeat perferendis facilis cumque pariatur, quam provident quo fuga
+                sapiente, illum, explicabo id iure quae! Voluptatum labore quisquam perferendis officiis cumque,
+                reprehenderit sequi assumenda nam a doloremque qui, omnis fuga ab aperiam distinctio laborum sint vitae
+                expedita quo obcaecati eveniet dolorum aliquid.</p>
+        </div>
+        <div class="col-md-4">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat officia molestias accusamus consectetur
+                fugit beatae deleniti ipsam laborum ut distinctio adipisci atque maxime, necessitatibus animi illum
+                dolor doloribus corrupti vel cumque! Porro id maxime laudantium!</p>
+        </div>
+        <div class=" card col-md-12 mt-4" style="border-style: none;">
+            <a href="/about" class="btn btn-bgc m-auto">More Info</a></a>
+        </div>
+    </div>
+
+
+</section>
+
+
+<!-- Subject Courses -->
+
+<section class="subjects_home container my-3 py-2">
+    <div class="d-flex px-2 m-0" style="justify-content:space-between; align-items:center;">
+        <h2 class="txtc"><i class="fas fa-book-reader"></i> Courses</h2>
+        <a href="{% url 'subjects' %}" class="text-danger text-decoration-none "><h6 class="txtc">View All</h6></a>
+
+    </div>
+    <hr class="mt-1">
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="owl-carousel owl-theme">
+
+                    {% for sub in subjects.all %}
+                    <div class="item ">
+                        <a href="/subjects/{{sub.sub_id}}" class="text-decoration-none text-dark">
+                            <div class="card cardStyle border-1 shadow">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center fw-bold txtc">{{sub.sub_name}}</h5>
+                                    <p class="card-text">{{sub.sub_desc|slice:"0:155" }}...</p>
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+</section>
+
+
+<!-- Contact -->
+<section class="contact-us" id="contact">
+    <div class="container py-4">
+        <h2>
+            <i class="far fa-envelope"></i> <span class="contact"> Contact Us</span>
+        </h2>
+        <div class="hr1"></div>
+
+        <p>
+            Write Us! We will reach you as soon as possible!
+        </p>
+
+        <form class="row g-3" method="POST" action="contact">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <label for="fullname" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Your Name">
+            </div>
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="abc@gmail.com">
+            </div>
+
+            <div class="col-6">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Kumaripati, Lalitpur">
+            </div>
+            <div class="col-6">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number">
+            </div>
+
+            <div class="col-12">
+                <label for="desc" class="form-label">Message Here</label>
+
+                <textarea class="form-control" name="desc" id="desc"
+                    placeholder="Please Give your message Here."></textarea>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-bgc">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+
+
+
+{% endblock content %}
+
+
+{% block js %}
+<script>
+
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        responsive: {
+            0: {
+                items: 2
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 4
+            }
+        }
+    })
+</script>
+
+{% endblock %}

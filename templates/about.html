@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<style>
+    body {
+        background-color: rgb(241, 243, 241);
+    }
+
+    #about-html {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+    }
+
+    #faq {
+        width: 100%;
+        text-align: center;
+    }
+
+    .imageDiv {
+        height: 130px;
+    }
+
+    .imageDiv img {
+        max-height: 100%;
+        max-width: 80%;
+        margin: auto;
+        border-radius: 200%;
+    }
+</style>
+{% endblock css %}
+
+{% block title %}About{% endblock title %}
+{% block aactive %} active {% endblock %}
+{% block content %}
+
+<section id="about-html" class="container my-2">
+    <h2 class="text-center txtc">FAQ</h2>
+    <div class="hr1"></div>
+    <div id="faq" class="p-3">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button bgc text-white" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            How Tutors Point works?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Our business was started for one sole purpose, "connect needy students with passionate and
+                            experienced teachers throughout Nepal." We have successfully achieved that goal by
+                            connecting
+                            over
+                            1,000 students in every corner of Nepal (even abroad) with over 10,000 Nepali teachers.
+                            Getting
+                            help
+                            in tutoring is easier than you think. We will connect you with one of the best and
+                            experienced
+                            teachers in your area. You could say we pioneered the digital tutoring service in Nepal, and
+                            if
+                            you
+                            did, you'd be right.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            How I request a tutor?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Many ways.
+                            Give us a call at 123333333 or 01-123123
+                            "Open our website, select a tutor from our database of 1000s of
+                            qualified teachers and give us a call to lockdown their schedule.
+                            <br>
+                            "Simply send us an email with your educational requirements and we will contact you within
+                            24
+                            hours.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            How do I pay?
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        There is no fees to businesses (school, colleges, institutes) or parents to use our service.
+                        After
+                        15 days, you can make payment using one of the method that is most convenient to you-
+                        1.Electronic payment (eSewa, PayPal or Credit Card)
+                        2.Check or cash by visiting our office or directly to tutor/teacher
+                        3.Direct deposit to our bank account
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            What is your privacy policy?
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Privacy is a serious matter for us. Your information is not shared or sold to third parties for
+                        marketing or any other business purposes
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            What if I am not satisfied with the quality of teaching?
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        No worries. Simply give us a call within 2 business days. We will ask you few questions and send
+                        a
+                        replacement at no cost to you. You will not be charged for those 2 days.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- Our Team -->
+<section class="our_team container my-4">
+    <h2 class="text-center">Our Teams</h2>
+    <div class="hr1 mx-auto"></div>
+
+    <div class="row mt-3">
+        <!--
+        <div class="col-md-12">
+            <div class="owl-carousel owl-theme">
+
+                {% for tutor in users %}
+                <div class="item ">
+                    <div class="card hover-shadow" style="width: 18rem;">
+                        <div class="imageDiv bg-white shadow-sm">
+
+                            <img class="img-fluid rounded-circle img-thumbnail shadow-sm" src="{{tutor.image.url}}"
+                                alt="Tutor">
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title txtc">{{tutor.user.first_name}} {{tutor.user.last_name}}</h5>
+                            <p class="card-text m-0">{{tutor.qualification}}</p>
+                            <p class="card-text m-0">{{tutor.phone}}</p>
+                            <p class="card-text">{{tutor.user.email}}</p>
+                            <a href="{% url 'booking' tutor.user.id %}" class="btn btn-bgc btn-sm mt-2">Book Him</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    -->
+
+        {% for i in users %}
+        <div class="col-md-4 col-lg-3 col-sm-6 my-lg-3">
+            <div class="our-team">
+                <div class="pic">
+                    <img src="{{i.image.url}}">
+                </div>
+                <div class="team-content">
+                    <h3 class="title">{{i.user.first_name}} {{i.user.last_name}}</h3>
+                    <span class="post">{{i.qualification}}</span>
+                    <ul class="social">
+                        <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-google-plus"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    </div>
+    </div>
+
+
+
+    </div>
+
+
+
+</section>
+
+{% endblock content %}
+
+
+{% block js %}
+<script>
+
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 4
+            }
+        }
+    })
+</script>
+
+{% endblock %}

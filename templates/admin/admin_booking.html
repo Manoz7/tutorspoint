@@ -1,0 +1,65 @@
+{% extends 'admin/admin_nav.html' %}
+
+{% block css%}
+<style>
+    
+    .hidden {
+        display: none;
+    }
+    .bdt {
+        text-shadow: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        line-height: 1.65;
+        font-weight: bold;
+        font-family: monospace;
+        text-align: center;
+        color: #414141;
+
+
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="container my-4">
+        <h3 class="bdt">All Booking Details</h3>
+        <hr>
+        <table class=" table table-hover teble-responsive">
+            <thead class="table-dark text-white">
+                <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Tutor </th>
+
+                    <th scope="col">Book Date</th>
+                    <th scope="col">Book Days</th>
+                    <th scope="col">Book Hours</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books%}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{book.user.subject.sub_name}}</td>
+                    <td>{{book.customer.user.first_name}} {{book.customer.user.last_name}}</td>
+                    <td>{{book.customer.address}}</td>
+                    <td>{{book.user.user.first_name}} {{book.user.user.last_name}}</td>
+                    <td>{{book.grade}}</td>
+                    <td>{{book.book_days}} days</td>
+                    <td>{{book.book_hours}} hours</td>
+                    <td>{{book.status.status}}</td>
+                    
+                </tr>
+                {% endfor %}
+    
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+{% endblock %}

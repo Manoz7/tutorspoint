@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Roboto+Slab:wght@300;400&display=swap");
+
+
+:root {
+    --font1: "Montserrat";
+    --font2: "Roboto Slab";
+    --color1: #2C5364;
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    line-height: 1.5;
+}
+
+/*Navbar  */
+.navbar, footer{
+    background-color: var(--color1);
+}
+
+
+
+/* Cover Part */
+.cover-part{
+    height: 70vh;
+    position: relative;
+}
+
+.cover-part::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 70vh;
+    background: url("../images/banner1.jpg") no-repeat center center/cover fixed;
+    z-index: -1;
+    opacity: 1;
+    
+}
+
+.cover-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font2);
+    text-align: center;
+    height: 100%;
+}
+
+.cover-header h2 span{
+    animation: color-change 2s infinite;
+}
+
+
+
+
+ @keyframes color-change {
+    0% { color: rgb(3, 107, 38); }
+    25% { color: rgb(19, 5, 5); }
+    50% { color: rgb(59, 59, 175); }
+    100% { color: rgb(175, 14, 127); }
+  }
+
+
+#faq{
+    color: rgb(13, 100, 64);
+}
+
+/* Subject View Part */
+.subject-view{
+    padding: 10px;
+    border: 4px solid beige;
+    box-shadow: var(--color1) 5px 5px 5px 5px;
+}
+
+#sub-desc{
+    border-left: rgb(100, 211, 137) 7px solid;
+    padding-inline: 10px;
+
+}
+
+
+
+/* For Card Style */
+.cardStyle{
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+      transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    cursor: pointer;
+}
+
+.cardStyle:hover{
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px var(--color1), 0 4px 8px var(--color1);
+}
+
+
+
+/* Utility classes */
+/* Linear Gradient For Buttons */
+.btn-bgc{
+    background: linear-gradient(to right, #2193b0 , #2C5364);
+    color: white;
+}
+
+.bgc{
+    background: linear-gradient(to right, #2193b0 , #2C5364);
+    color: white;
+}
+
+.btn-bgc:hover{
+    color: var(--color1);
+    background: linear-gradient(to right, #ffffff , #cae4ee);
+    border: 1px solid var(--color1);
+
+}
+
+/* For text color */
+.txtc{
+    color: var(--color1);
+}
+
+
+/* hr class */
+.hr1{
+    width: 222px;
+    height: 2px;
+    background-color: var(--color1);
+    margin-bottom: 6px;
+}
+
+/* My teams in about.html  */
+.our-team {
+    text-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease 0s;
+}
+
+.our-team .pic {
+    background: var(--color1);
+    transition: all 0.3s ease 0s;
+}
+
+.our-team:hover .pic {
+    padding: 10px;
+    border-radius: 10px;
+    transform: scale(0.5) translateY(-30%);
+}
+
+.our-team .pic img {
+    width: 100%;
+    height: 250px;
+}
+
+.our-team .team-content {
+    width: 100%;
+    padding: 7px 15px;
+    background: var(--color1);
+    position: absolute;
+    bottom: -30%;
+    right: 0;
+    opacity: 0;
+    transition: all 0.3s ease 0s;
+}
+
+.our-team:hover .team-content {
+    opacity: 1;
+    bottom: -10px;
+}
+
+.our-team .title {
+    font-size: 22px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 5px 0;
+}
+
+.our-team .post {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    font-style: italic;
+    text-transform: capitalize;
+    margin: 0 0 5px 0;
+}
+
+.our-team .social {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    transition: all 0.35s ease 0s;
+}
+
+.our-team .social li {
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.our-team .social li a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 15px 0 15px 0;
+    font-size: 20px;
+    color: #fff;
+    overflow: hidden;
+    z-index: 1;
+    position: relative;
+    transition: all 0.35s ease 0s;
+}
+
+.our-team .social li a:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #e06f06;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    z-index: -1;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.our-team .social li a:hover:before {
+    left: 0;
+}
+
+@media only screen and (max-width: 990px) {
+    .our-team {
+        margin-bottom: 30px;
+    }
+}

@@ -1,0 +1,61 @@
+{% extends 'admin/admin_nav.html' %}
+<style>
+    .image-thumbnail {
+        display: block;
+        height: 10vh;
+        max-width: 10vw;
+    }
+
+    img {
+        display: block;
+        height: 10vh;
+        max-width: 10vw;
+    }
+
+    .card-row {
+        justify-content: flex-start;
+    }
+</style>
+
+{% block body %}
+
+<div class="container my-4">
+    <h2 class="text-center mb-3 text-primary">Our Subjects</h2>
+    <hr>
+    <div class="row">
+
+        <div class="col-md-10"> &nbsp;</div>
+        <div class="col-md-2">
+            <a href="{% url 'add_subject' %}" class="btn btn-outline-primary mb-3">Add Subject</a>
+        </div>
+
+    </div>
+    {% include '../messages.html' %}
+
+
+    <div class="row">
+        {% for i in subjects %}
+        <div class="col-lg-3 col-md-4 mb-2">
+            <div class="card cardStyle h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-danger text-center fw-bold p-1">{{i.sub_name}}</h5>
+                    <p class="card-text">{{i.sub_desc|slice:"0:177" }}...</p>
+                    <div class="d-flex mt-2 text-center">
+                        <a href="{% url 'editsubjects' i.sub_id %}" class="m-1">
+                            <button class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</button></a>
+                        <a href="{% url 'deleteSubject' i.sub_id %}" class="m-1">
+                            <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">
+                                <i class="fa fa-trash"></i> Delete
+                            </button>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+</div>
+{% endblock %}
